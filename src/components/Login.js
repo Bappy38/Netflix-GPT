@@ -1,6 +1,8 @@
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { validateSignInForm, validateSignUpForm } from "../utils/validators";
 import NavBar from "./NavBar";
 import { useRef, useState } from "react";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
 
@@ -30,12 +32,32 @@ const Login = () => {
             return;
 
         if (isSignInForm) {
-
-            // Sign in
+            signInWithEmailAndPassword(
+                auth, 
+                email.current.value, 
+                password.current.value
+            )
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log(user);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
         else {
-
-            // Sign Up
+            createUserWithEmailAndPassword(
+                auth,
+                email.current.value,
+                password.current.value
+            )
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log(user);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         }
     }
 
