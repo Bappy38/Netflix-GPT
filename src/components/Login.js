@@ -1,12 +1,33 @@
+import { validateSignInForm, validateSignUpForm } from "../utils/validators";
 import NavBar from "./NavBar";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Login = () => {
 
     const [isSignInForm, setIsSignInForm] = useState(true);
+    const [errorMessage, setErrorMessage] = useState(null);
+
+    const firstName = useRef(null);
+    const lastName = useRef(null);
+    const email = useRef(null);
+    const password = useRef(null);
 
     const toggleIsSignInForm = () => {
         setIsSignInForm(!isSignInForm);
+    }
+
+    const handleFormSubmission = () => {
+
+        if (isSignInForm) {
+
+            const errMessage = validateSignInForm(email.current.value, password.current.value);
+            setErrorMessage(errMessage);
+        }
+        else {
+
+            const errMessage = validateSignUpForm(firstName.current.value, lastName.current.value, email.current.value, password.current.value);
+            setErrorMessage(errMessage);
+        }
     }
 
     return (
@@ -18,7 +39,7 @@ const Login = () => {
                     alt="background"/>
             </div>
             
-            <form 
+            <form
                 className="bg-black absolute w-4/12 my-36 p-12 mx-auto right-0 left-0 text-white bg-opacity-80 rounded-md">
                 <h1
                     className="font-bold text-3xl px-2 py-4">{isSignInForm? "Sign In" : "Sign Up"}</h1>
@@ -26,25 +47,40 @@ const Login = () => {
                 {!isSignInForm && <input 
                     className="p-2 m-2 w-full bg-gray-700 rounded-md"
                     type="text"
-                    placeholder="First Name"/>}
+                    placeholder="First Name"
+                    ref={firstName}/>}
 
                 {!isSignInForm && <input 
                     className="p-2 m-2 w-full bg-gray-700 rounded-md"
                     type="text"
-                    placeholder="Last Name"/>}
+                    placeholder="Last Name"
+                    ref={lastName}/>}
 
                 <input 
                     className="p-2 m-2 w-full bg-gray-700 rounded-md"
                     type="text"
-                    placeholder="Email Address"/>
+                    placeholder="Email Address"
+                    ref={email}/>
                 
                 <input
                     className="p-2 m-2 w-full bg-gray-700 rounded-md"
                     type="password"
-                    placeholder="Password"/>
+                    placeholder="Password"
+                    ref={password}/>
+
+                <p 
+                    className="text-red-600 font-bold text-lg p-2"
+                >
+                    {errorMessage}
+                </p>
 
                 <button
-                    className="p-2 m-2 w-full bg-red-600 font-semibold rounded-md">{isSignInForm? "Sign In" : "Sign Up"}</button>
+                    type="button"
+                    className="p-2 m-2 w-full bg-red-600 font-semibold rounded-md"
+                    onClick={handleFormSubmission}
+                    >
+                        {isSignInForm? "Sign In" : "Sign Up"}
+                </button>
 
                 <p
                     onClick={toggleIsSignInForm}
