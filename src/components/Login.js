@@ -3,11 +3,14 @@ import { validateSignInForm, validateSignUpForm } from "../utils/validators";
 import NavBar from "./NavBar";
 import { useRef, useState } from "react";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
+
+    const navigate = useNavigate();
 
     const firstName = useRef(null);
     const lastName = useRef(null);
@@ -32,6 +35,8 @@ const Login = () => {
             return;
 
         if (isSignInForm) {
+
+            // API provided by firebase to sign in
             signInWithEmailAndPassword(
                 auth, 
                 email.current.value, 
@@ -40,12 +45,15 @@ const Login = () => {
                 .then((userCredential) => {
                     const user = userCredential.user;
                     console.log(user);
+                    navigate('/browse');
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         }
         else {
+
+            // API provided by firebase to sign up
             createUserWithEmailAndPassword(
                 auth,
                 email.current.value,
@@ -54,6 +62,7 @@ const Login = () => {
                 .then((userCredential) => {
                     const user = userCredential.user;
                     console.log(user);
+                    navigate('/browse');
                 })
                 .catch((error) => {
                     console.log(error);
