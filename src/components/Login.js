@@ -1,9 +1,12 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { validateSignInForm, validateSignUpForm } from "../utils/validators";
 import NavBar from "./NavBar";
 import { useRef, useState } from "react";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { DUMMY_USER_IMG } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addUser } from "../store/userSlice";
 
 const Login = () => {
 
@@ -11,6 +14,7 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState(null);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const firstName = useRef(null);
     const lastName = useRef(null);
@@ -62,7 +66,24 @@ const Login = () => {
                 .then((userCredential) => {
                     const user = userCredential.user;
                     console.log(user);
-                    navigate('/browse');
+
+                    updateProfile(user, 
+                        {
+                            displayName: firstName.current.value + lastName.current.value,
+                            photoURL: DUMMY_USER_IMG
+                        }).then(() => {
+                            const { uid, email, displayName, photoURL } = auth.currentUser;
+                            dispatch(
+                            addUser({
+                                uid: uid,
+                                email: email,
+                                displayName: displayName,
+                                photoURL: photoURL
+                            }));
+                            navigate('/browse');
+                        }).catch((error) => {
+                            console.error(error);
+                        });
                 })
                 .catch((error) => {
                     console.log(error);
