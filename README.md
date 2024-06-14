@@ -4,7 +4,8 @@
 
 - Functional Component
 - Hooks:
-    - React Hooks: `useRef`
+    - React Hooks: `useRef`, `useEffect`
+    - React Router DOM Hooks: `useNavigate`
 - Routing
 - Form Validation
 
