@@ -18,15 +18,24 @@ const Login = () => {
 
     const handleFormSubmission = () => {
 
+        const errMessage = isSignInForm
+            ?
+            validateSignInForm(email.current.value, password.current.value)
+            :
+            validateSignUpForm(firstName.current.value, lastName.current.value, email.current.value, password.current.value);
+
+        setErrorMessage(errMessage);
+
+        if (errMessage)
+            return;
+
         if (isSignInForm) {
 
-            const errMessage = validateSignInForm(email.current.value, password.current.value);
-            setErrorMessage(errMessage);
+            // Sign in
         }
         else {
 
-            const errMessage = validateSignUpForm(firstName.current.value, lastName.current.value, email.current.value, password.current.value);
-            setErrorMessage(errMessage);
+            // Sign Up
         }
     }
 
