@@ -3,7 +3,6 @@ import { validateSignInForm, validateSignUpForm } from "../utils/validators";
 import NavBar from "./NavBar";
 import { useRef, useState } from "react";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { DUMMY_USER_IMG } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addUser } from "../store/userSlice";
@@ -13,7 +12,6 @@ const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
 
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const firstName = useRef(null);
@@ -49,7 +47,6 @@ const Login = () => {
                 .then((userCredential) => {
                     const user = userCredential.user;
                     console.log(user);
-                    navigate('/browse');
                 })
                 .catch((error) => {
                     console.log(error);
@@ -80,7 +77,6 @@ const Login = () => {
                                 displayName: displayName,
                                 photoURL: photoURL
                             }));
-                            navigate('/browse');
                         }).catch((error) => {
                             console.error(error);
                         });
