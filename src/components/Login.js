@@ -3,9 +3,9 @@ import { validateSignInForm, validateSignUpForm } from "../utils/validators";
 import NavBar from "./NavBar";
 import { useRef, useState } from "react";
 import { auth } from "../utils/firebase";
-import { BANNER, DUMMY_USER_IMG } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addUser } from "../store/userSlice";
+import { BANNER, DUMMY_USER_IMG } from "../constants/appConstants";
 
 const Login = () => {
 
@@ -92,7 +92,7 @@ const Login = () => {
             <NavBar/>
             <div className="absolute">
                 <img
-                    src={BANNER}
+                    src={ BANNER }
                     alt="background"/>
             </div>
             
