@@ -1,10 +1,13 @@
 import NavBar from "./NavBar";
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 
 const Browse = () => {
+
+    useNowPlayingMovies();
+
     return (
         <div>
             <NavBar/>
-            Browse
         </div>
     );
 }

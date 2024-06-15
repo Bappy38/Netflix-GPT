@@ -3,7 +3,7 @@ import { validateSignInForm, validateSignUpForm } from "../utils/validators";
 import NavBar from "./NavBar";
 import { useRef, useState } from "react";
 import { auth } from "../utils/firebase";
-import { DUMMY_USER_IMG } from "../utils/constants";
+import { BANNER, DUMMY_USER_IMG } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addUser } from "../store/userSlice";
 
@@ -92,7 +92,7 @@ const Login = () => {
             <NavBar/>
             <div className="absolute">
                 <img
-                    src="https://assets.nflxext.com/ffe/siteui/vlv3/51c1d7f7-3179-4a55-93d9-704722898999/af6faa3e-4cde-4526-9532-602c0bcdf948/BD-en-20240610-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+                    src={BANNER}
                     alt="background"/>
             </div>
             
