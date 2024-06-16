@@ -73,6 +73,7 @@ const NavBar = () => {
             <div className="flex mt-4 h-10">
 
                 <select
+                    value={preferredLang}
                     onChange={handleLanguageChange}
                     className="px-3 mr-5 rounded-md">
                     {
