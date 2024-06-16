@@ -3,11 +3,13 @@ import { validateSignInForm, validateSignUpForm } from "../utils/validators";
 import NavBar from "./NavBar";
 import { useRef, useState } from "react";
 import { auth } from "../utils/firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../store/userSlice";
 import { BANNER, DUMMY_USER_IMG } from "../constants/appConstants";
+import lang from "../constants/languageConstants";
 
 const Login = () => {
+    const preferredLang = useSelector((store) => store.config.lang);
 
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
@@ -99,30 +101,30 @@ const Login = () => {
             <form
                 className="bg-black absolute w-4/12 my-36 p-12 mx-auto right-0 left-0 text-white bg-opacity-80 rounded-md">
                 <h1
-                    className="font-bold text-3xl px-2 py-4">{isSignInForm? "Sign In" : "Sign Up"}</h1>
+                    className="font-bold text-3xl px-2 py-4">{isSignInForm? lang.login[preferredLang].signIn : lang.login[preferredLang].signUp}</h1>
 
                 {!isSignInForm && <input 
                     className="p-2 m-2 w-full bg-gray-700 rounded-md"
                     type="text"
-                    placeholder="First Name"
+                    placeholder={lang.login[preferredLang].firstName}
                     ref={firstName}/>}
 
                 {!isSignInForm && <input 
                     className="p-2 m-2 w-full bg-gray-700 rounded-md"
                     type="text"
-                    placeholder="Last Name"
+                    placeholder={lang.login[preferredLang].lastName}
                     ref={lastName}/>}
 
                 <input 
                     className="p-2 m-2 w-full bg-gray-700 rounded-md"
                     type="text"
-                    placeholder="Email Address"
+                    placeholder={lang.login[preferredLang].emailAddress}
                     ref={email}/>
                 
                 <input
                     className="p-2 m-2 w-full bg-gray-700 rounded-md"
                     type="password"
-                    placeholder="Password"
+                    placeholder={lang.login[preferredLang].password}
                     ref={password}/>
 
                 <p 
@@ -136,13 +138,13 @@ const Login = () => {
                     className="p-2 m-2 w-full bg-red-600 font-semibold rounded-md"
                     onClick={handleFormSubmission}
                     >
-                        {isSignInForm? "Sign In" : "Sign Up"}
+                        {isSignInForm? lang.login[preferredLang].signIn : lang.login[preferredLang].signUp}
                 </button>
 
                 <p
                     onClick={toggleIsSignInForm}
                     className="p-2 m-2 w-full cursor-pointer">
-                        {isSignInForm? "New to Netflix? Sign up now." : "Already a user? Sign in now."}
+                        {isSignInForm? lang.login[preferredLang].newToNetflixSignUpNow : lang.login[preferredLang].alreadyAUserSignInNow}
                 </p>
             </form>
         </div>

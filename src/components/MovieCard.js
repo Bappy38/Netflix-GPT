@@ -2,9 +2,7 @@ import { IMAGE_BASE_URL } from "../constants/tmdbConstants";
 
 const MovieCard = (props) => {
 
-    const { title, vote_average, poster_path } = props.movie;
-
-    console.log(title, vote_average, poster_path);
+    const { title, poster_path } = props.movie;
 
     return (
         <div className="w-48 pr-4">
