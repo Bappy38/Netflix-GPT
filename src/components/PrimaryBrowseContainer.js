@@ -10,7 +10,6 @@ const PrimaryBrowseContainer = () => {
         return;
 
     const topMovie = movies[2];
-    console.log(topMovie);
 
     const {id, original_title, overview} = topMovie;
 
