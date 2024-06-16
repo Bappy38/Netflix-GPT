@@ -9,7 +9,7 @@ const PrimaryBrowseContainer = () => {
     if (!movies)
         return;
 
-    const topMovie = movies[2];
+    const topMovie = movies[3];
 
     const {id, original_title, overview} = topMovie;
 
