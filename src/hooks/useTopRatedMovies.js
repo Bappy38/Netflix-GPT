@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { API_KEY, API_OPTIONS, TOP_RATED_MOVIES_API } from "../constants/tmdbConstants"
+import { TMDB_API_KEY, TMDB_API_OPTIONS, TOP_RATED_MOVIES_API } from "../constants/tmdbConstants"
 import { addTopRatedMovies } from "../store/moviesSlice";
 import { useEffect } from "react";
 
@@ -10,9 +10,9 @@ const useTopRatedMovies = () => {
 
         const data = await fetch(
             TOP_RATED_MOVIES_API
-                .replace('API_KEY', API_KEY)
+                .replace('API_KEY', TMDB_API_KEY)
                 .replace('PAGE_NO', '1'),
-            API_OPTIONS
+            TMDB_API_OPTIONS
         );
         const json = await data.json();
         dispatch(addTopRatedMovies(json.results));

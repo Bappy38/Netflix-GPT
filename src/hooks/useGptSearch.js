@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { API_KEY, API_KEY_PLACEHOLDER, API_OPTIONS, MOVIE_SEARCH_API, PAGE_NO_PLACEHOLDER, QUERY_PLACEHOLDER } from "../constants/tmdbConstants";
+import { API_KEY_PLACEHOLDER, MOVIE_SEARCH_API, PAGE_NO_PLACEHOLDER, QUERY_PLACEHOLDER, TMDB_API_KEY, TMDB_API_OPTIONS } from "../constants/tmdbConstants";
 import { updateGptSearchResult } from "../store/gptSlice";
 import openai from "../utils/openai";
 
@@ -33,9 +33,9 @@ const useGptSearch = () => {
         const data = await fetch(
             MOVIE_SEARCH_API
                 .replace(PAGE_NO_PLACEHOLDER, '1')
-                .replace(API_KEY_PLACEHOLDER, API_KEY)
+                .replace(API_KEY_PLACEHOLDER, TMDB_API_KEY)
                 .replace(QUERY_PLACEHOLDER, movieName),
-            API_OPTIONS
+            TMDB_API_OPTIONS
         );
         const json = await data.json();
         return json.results;

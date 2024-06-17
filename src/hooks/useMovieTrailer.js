@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { API_KEY, API_OPTIONS, MOVIE_CLIPS_API } from "../constants/tmdbConstants";
+import { MOVIE_CLIPS_API, TMDB_API_KEY, TMDB_API_OPTIONS } from "../constants/tmdbConstants";
 import { useDispatch } from "react-redux";
 import { addTopMovieTrailer } from "../store/moviesSlice";
 
@@ -11,9 +11,9 @@ const useMovieTrailer = (movieId) => {
 
         const data = await fetch(
             MOVIE_CLIPS_API
-                .replace('API_KEY', API_KEY)
+                .replace('API_KEY', TMDB_API_KEY)
                 .replace('MOVIE_ID', movieId), 
-            API_OPTIONS);
+            TMDB_API_OPTIONS);
         const json = await data.json();
 
         const trailers = json?.results?.filter(video => video.type === "Trailer");

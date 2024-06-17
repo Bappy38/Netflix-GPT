@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { addNowPlayingMovies } from "../store/moviesSlice";
 import { useEffect } from "react";
-import { API_KEY, API_OPTIONS, NOW_PLAYING_MOVIES_API } from "../constants/tmdbConstants";
+import { NOW_PLAYING_MOVIES_API, TMDB_API_KEY, TMDB_API_OPTIONS } from "../constants/tmdbConstants";
 
 const useNowPlayingMovies = () => {
     const dispatch = useDispatch();
@@ -9,9 +9,9 @@ const useNowPlayingMovies = () => {
 
         const data = await fetch(
             NOW_PLAYING_MOVIES_API
-                .replace('API_KEY', API_KEY)
+                .replace('API_KEY', TMDB_API_KEY)
                 .replace('PAGE_NO', '1'),
-            API_OPTIONS
+            TMDB_API_OPTIONS
         );
         const json = await data.json();
         dispatch(addNowPlayingMovies(json.results));

@@ -1,4 +1,4 @@
-export const API_KEY = "a7f95ad3215041994a91283d05a2b125";
+export const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
 export const NOW_PLAYING_MOVIES_API = "https://api.themoviedb.org/3/movie/now_playing?page=PAGE_NO&api_key=API_KEY";
 export const POPULAR_MOVIES_API = "https://api.themoviedb.org/3/movie/popular?page=PAGE_NO&api_key=API_KEY";
@@ -9,12 +9,12 @@ export const MOVIE_SEARCH_API = "https://api.themoviedb.org/3/search/movie?query
 
 export const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500/";
 
-export const API_OPTIONS = 
+export const TMDB_API_OPTIONS = 
 {
     method: 'GET',
     headers: {
         accept: 'application/json',
-        Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhN2Y5NWFkMzIxNTA0MTk5NGE5MTI4M2QwNWEyYjEyNSIsInN1YiI6IjY2NmQ4YTllODY5YTI4MWZiZTkwZjFkMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.hmYLIOj1nLmoA7rHWGQ1g7zEQDyqTQ0IHD2Ek64IorA"
+        Authorization: "Bearer " + process.env.REACT_APP_TMDB_TOKEN
     }
 };
 
