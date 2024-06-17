@@ -15,8 +15,6 @@ const NavBar = () => {
     const preferredLang = useSelector((store) => store.config.lang);
     const gptSearchEnabled = useSelector((store) => store.gpt.showGptSearch);
 
-    console.log(gptSearchEnabled);
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
