@@ -12,15 +12,15 @@ const useGptSearch = () => {
 
         try {
             // const searchResult = await getGptSearchResult(searchQuery);
-            const dummyResult = "Andaz Apna Apna, Hera Pheri, Chupke Chupke, Welcome, Golmal";
+            const dummyResult = "Andaz Apna Apna, Hera Pheri, Chupke Chupke, Welcome, De Dana Dan";
             const movieNames = dummyResult.split(",");
             
             const promises = movieNames.map((movieName) => searchMovieInTMDB(movieName));
             const tmdbResults = await Promise.all(promises);
 
             dispatch(updateGptSearchResult({
-                gptSearchResult: dummyResult,
-                gptSuggestedMovies: tmdbResults.flat()
+                gptSearchResult: movieNames,
+                gptSuggestedMovies: tmdbResults
             }));
         } catch (error) {
             console.error(error);
