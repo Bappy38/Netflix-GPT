@@ -18,3 +18,6 @@ This is basically a dashboard like Netflix. I focused only on frontend in this p
 - Redux Store
 - Firebase (Authentication, Deployment)
 - Third Party API Integration (TMDB)
+- How to make a multi-lingual application
+
+1:10:00

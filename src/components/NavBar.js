@@ -13,6 +13,9 @@ const NavBar = () => {
 
     const user = useSelector((store) => store.user);
     const preferredLang = useSelector((store) => store.config.lang);
+    const gptSearchEnabled = useSelector((store) => store.gpt.showGptSearch);
+
+    console.log(gptSearchEnabled);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -95,7 +98,12 @@ const NavBar = () => {
                                 rounded-md
                                 px-3"
                         >
-                            {lang.gptSearch[preferredLang].gptSearch}
+                            {
+                                gptSearchEnabled?
+                                    lang.gptSearch[preferredLang].home
+                                    :
+                                    lang.gptSearch[preferredLang].gptSearch
+                            }
                         </button>
 
                         {/* <img

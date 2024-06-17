@@ -44,11 +44,13 @@ const lang = {
     gptSearch: {
         english: {
             search: "Search",
+            home: "Home",
             gptSearch: "GPT Search",
             gptSearchBarPlaceholder: "What would you like to watch today?"
         },
         bengali: {
             search: "অনুসন্ধান করুন",
+            home: "হোম",
             gptSearch: "জিপিটি তে অনুসন্ধান করুন",
             gptSearchBarPlaceholder: "আপনি আজ কি দেখতে চান?"
         }
