@@ -37,7 +37,7 @@ const GPTSearchBar = () => {
                         rounded-md
                         col-span-3"
                 >
-                    {lang.gptSearch[preferredLang].search}
+                    {lang.gptSearch[preferredLang].search} TEST
                 </button>
             </form>
         </div>

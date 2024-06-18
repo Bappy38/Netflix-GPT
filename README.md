@@ -29,3 +29,4 @@ This is basically a dashboard like Netflix. I focused only on frontend in this p
 ## What I have explored regarding Cloud?
 
 - How to deploy a react app in Vercel
+- How to deploy a react app in AWS
