@@ -5,12 +5,16 @@ This is basically a dashboard like Netflix. I focused only on frontend in this p
 ## What I have explored about React doing this project?
 
 - Functional Component
+- Classbased Component
+- React Props
 - Hooks:
-    - React Hooks: `useRef`, `useEffect`
+    - React Hooks: `useState`, `useRef`, `useEffect`
     - React Router DOM Hooks: `useNavigate`
+    - Redux Hooks: `useSelector`, `useDispatch`
 - Creating Custom Hooks
-- Routing
+- Routing (`react-router-dom`)
 - Form Validation
+- State Management
 
 ## What I have explored apart from React?
 
@@ -21,3 +25,7 @@ This is basically a dashboard like Netflix. I focused only on frontend in this p
 - Multi-language Feature
 - GPT API Integration
 - Shimmer UI
+
+## What I have explored regarding Cloud?
+
+- How to deploy a react app in Vercel
