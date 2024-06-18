@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { API_KEY_PLACEHOLDER, MOVIE_SEARCH_API, PAGE_NO_PLACEHOLDER, QUERY_PLACEHOLDER, TMDB_API_KEY, TMDB_API_OPTIONS } from "../constants/tmdbConstants";
-import { updateGptSearchResult } from "../store/gptSlice";
+import { updateGptSearchQuery, updateGptSearchResult } from "../store/gptSlice";
 import openai from "../utils/openai";
 
 
@@ -11,6 +11,9 @@ const useGptSearch = () => {
     const handleGptSearchQuery = async (searchQuery) => {
 
         try {
+
+            dispatch(updateGptSearchQuery(searchQuery));
+
             // const searchResult = await getGptSearchResult(searchQuery);
             const dummyResult = "Andaz Apna Apna, Hera Pheri, Chupke Chupke, Welcome, De Dana Dan";
             const movieNames = dummyResult.split(",");

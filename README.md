@@ -20,3 +20,4 @@ This is basically a dashboard like Netflix. I focused only on frontend in this p
 - Third Party API Integration (TMDB)
 - Multi-language Feature
 - GPT API Integration
+- Shimmer UI
