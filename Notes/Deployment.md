@@ -9,3 +9,5 @@
 - In the `App settings` step, check if the `Build command` and `Build output directory` is correct or not (You can also protect the site with username and password if it's a private site). Hit next. 
 - Review all the configuration you set. Provide the necessary environment variable. And hit `Save and Deploy`.
 - Visit deployed url once the deployment is done.
+
+**Now, whenever we push to the selected branch, our app will automatically deployed.**
